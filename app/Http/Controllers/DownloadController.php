@@ -46,7 +46,7 @@ class DownloadController extends Controller
 
         $dailyDownloads = Download::selectRaw('DATE(occurred_at) as date, COUNT(occurred_at) as count')
             ->where('episode_id', $episode_id)
-            ->whereBetween('occurred_at', ['2020-07-10', '2020-07-16'])
+            ->whereBetween('occurred_at', ['2022-07-10', '2022-07-16'])
             ->groupByRaw('DATE(occurred_at)')
             ->get();
             
