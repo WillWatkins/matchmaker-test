@@ -30,7 +30,7 @@
                 <a href="{{ route('storeData', [
                             'type' => 'episode.downloaded',
                             'event_id' => '1234',
-                            'occurred_at' => '2020-07-10 15:00:00.000',
+                            'occurred_at' => '2020-07-11 15:00:00.000',
                             'data' => [
                                 'episode_id' => '1',
                                 'podcast_id' => '1'
@@ -38,18 +38,31 @@
                             ]) 
                         }}"
                     >
-                    Data 1
+                    Add Data 1 to database
                 </a> </br>
                 <a href="{{ route('storeData', [
                             'type' => 'episode.downloaded',
                             'event_id' => '5678',
-                            'occurred_at' => '2020-07-10 15:00:00.000',
+                            'occurred_at' => '2020-07-12 15:00:00.000',
                             'data' => [
                                 'episode_id' => '2',
                                 'podcast_id' => '2'
                                 ] 
                             ]) 
-                        }}">Data 2</a>
+                        }}"
+                        >Add Data 2 to database</a> </br>
+
+                <a href="{{ route('dailyDownloads', [
+                            'episode_id' => 1
+                            ])
+                        }}"
+                    > Daily download data for episode 1</a> </br>
+
+                <a href="{{ route('dailyDownloads', [
+                    'episode_id' => 2
+                    ])
+                }}"
+                    > Daily download data for episode 2</a>
             </div>
         </div>
     </body>
