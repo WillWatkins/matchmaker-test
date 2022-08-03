@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/download-data/store', [App\Http\Controllers\DownloadController::class, 'store'])->name('storeData');
+Route::get('/download-data/daily-downloads', [App\Http\Controllers\DownloadController::class, 'getDailyDownloads'])->name('dailyDownloads');

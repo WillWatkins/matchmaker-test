@@ -32,5 +32,27 @@ class DownloadController extends Controller
             'episode_id' => $episode_id,
             'podcast_id' => $podcast_id
         ]);
+
+        return view('welcome');
+    }
+
+    public function getDailyDownloads(Request $request) 
+    {
+        $validated = $request->validate([
+            'episode_id' => ['required','string']
+        ]);
+
+        $episode_id = $request->get('episode_id');
+
+        $dailyDownloads = Download::selectRaw('DATE(occurred_at) as date, COUNT(occurred_at) as count')
+            ->where('episode_id', $episode_id)
+            ->whereBetween('occurred_at', ['2020-07-10', '2020-07-16'])
+            ->groupByRaw('DATE(occurred_at)')
+            ->get();
+            
+        return response()->json([
+            'episode_id' => $episode_id,
+            'dailyDownloads' => $dailyDownloads
+        ]);
     }
 }
