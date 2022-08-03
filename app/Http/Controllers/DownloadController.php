@@ -25,5 +25,12 @@ class DownloadController extends Controller
         $episode_id = $request->get('data')['episode_id'];
         $podcast_id = $request->get('data')['podcast_id'];
 
+        Download::insert([
+            'type' => $type, 
+            'event_id' => $event_id,  
+            'occurred_at' => $occurred_at,
+            'episode_id' => $episode_id,
+            'podcast_id' => $podcast_id
+        ]);
     }
 }
