@@ -9,6 +9,15 @@ class DownloadController extends Controller
 {
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'type' => ['required', 'string'],
+            'event_id' => ['required', 'string'],
+            'occurred_at' => ['required', 'string'],
+            'data' => [
+                'episode_id' => ['required', 'string'],
+                'podcast_id' => ['required', 'string']
+            ]
+        ]);
 
         $type = $request->get('type');
         $event_id = $request->get('event_id');
