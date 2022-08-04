@@ -5,9 +5,6 @@
             <h2>Post data</h2>
             <button @click="addData(data1)">Add Data 1</button>
             <button @click="addData(data2)">Add Data 2</button>
-            <button @click="addData(incorrectData)">
-                Attempt to add incorrect data
-            </button>
         </div>
         <div class="cont_flex">
             <h2>Daily download data</h2>
@@ -44,27 +41,20 @@ export default {
                     podcast_id: "2",
                 },
             },
-            incorrectData: {
-                type: "episode.downloaded",
-                //missing event_id
-                occurred_at: "2022-07-12 15:00:00.000",
-                data: {
-                    episode_id: "2",
-                    podcast_id: "2",
-                },
-            },
         };
     },
     methods: {
         addData(data) {
-            axios.get(route("storeData", data)).then((data) => {
+            axios.get(route("storeData", data)).then(({ data }) => {
                 console.log(data);
             });
         },
         getDailyDownloadsByEpisodeId(episode_id) {
-            axios.get(route("dailyDownloads", { episode_id })).then((data) => {
-                console.log(data);
-            });
+            axios
+                .get(route("dailyDownloads", { episode_id }))
+                .then(({ data }) => {
+                    console.log(data);
+                });
         },
     },
 };
