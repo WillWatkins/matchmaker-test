@@ -26,7 +26,7 @@ export default {
             data1: {
                 type: "episode.downloaded",
                 event_id: "1234",
-                occurred_at: "2022-07-11 15:00:00.000",
+                occurred_at: "2022-08-04 15:00:00",
                 data: {
                     episode_id: "1",
                     podcast_id: "1",
@@ -35,7 +35,7 @@ export default {
             data2: {
                 type: "episode.downloaded",
                 event_id: "5678",
-                occurred_at: "2022-07-12 15:00:00.000",
+                occurred_at: "2022-08-04 15:00:00",
                 data: {
                     episode_id: "2",
                     podcast_id: "2",

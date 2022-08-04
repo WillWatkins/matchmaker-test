@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Download;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Download>
@@ -21,13 +21,14 @@ class DownloadFactory extends Factory
 
     public function definition()
     {
-        $random_date = rand(1,28);
-        if ($random_date < 10) $random_date = '0' . $random_date;
+        $random_num = rand(1,15);
+
+        $date = Carbon::now()->subDays($random_num)->toIso8601String();
 
         return [
             'type' => 'episode.downloaded',
             'event_id' => rand(1,10),
-            'occurred_at' => '2022-07-' . $random_date . ' 15:00:00.000',
+            'occurred_at' => $date,
             'episode_id' => rand(1,5),
             'podcast_id' => rand(1,5)
         ];

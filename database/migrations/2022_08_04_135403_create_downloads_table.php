@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->integer('event_id');
-            $table->date('occurred_at');
+            $table->dateTime('occurred_at');
             $table->integer('episode_id');
             $table->integer('podcast_id');
         });
