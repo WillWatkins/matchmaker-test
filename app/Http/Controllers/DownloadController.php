@@ -54,6 +54,7 @@ class DownloadController extends Controller
             ->where('episode_id', $episode_id)
             ->whereBetween('occurred_at', ['2022-07-10', '2022-07-16'])
             ->groupByRaw('DATE(occurred_at)')
+            ->orderBy('date')
             ->get();
             
         return response()->json([
