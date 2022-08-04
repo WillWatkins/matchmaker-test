@@ -1,25 +1,43 @@
 <?php
 
+use App\Models\Download;
+
 test('has webpage', function() {
     $response = $this->get('/');
 
     $response->assertStatus(200);
 });
 
-test('data recevied in controller', function() {
+test('data added to database', function() {
     $data_to_add = [
         'type'=> 'episode.downloaded',
-        'event_id'=> '1234',
+        'event_id'=> '1234567',
         'occurred_at'=> '2020-07-10 15:00:00.000',
         'data'=> [
             'episode_id'=> '1',
             'podcast_id'=> '1'
         ] 
     ];
+
+    //Test the event_id is not present in the databae before adding
+    $database_before_adding = Download::select('*')
+        ->where('event_id', '1234567')
+        ->get();
+
+    $this->assertEmpty($database_before_adding);
+
+    //Add the data
     $response = $this->get(route('storeData', $data_to_add));
 
-    $response->assertStatus(201);
+    //Test the event_id is present in the database after adding
+    $database_after_adding = Download::select('*')
+    ->where('event_id', '1234567')
+    ->get();
+    // dd($database_after_adding, $database_before_adding);
 
+    $this->assertCount(1, $database_after_adding);
+
+    $response->assertStatus(201);
 });
 
 test('addData fails if a prop is invalid', function() {
@@ -68,10 +86,9 @@ test('getDailyDownloads fails if an episode_id is invalid', function() {
 Other tests/functionality to add:
 
 TESTS
-- If a prop is valid but doens't exist in the database yet. I.e. a valid episode_id.
-- Test that the database receives the added download data. 
+- If a property is valid but doens't exist in the database yet. I.e. a valid episode_id.
 
 FUNCTIONALITY
-- When there is no data in the databse to retreive for that episode
+- When there is no data in the databse to retreive for that episode_id
 
 */
