@@ -18,7 +18,7 @@ class DownloadSeeder extends Seeder
     public function run()
     {
         Download::factory()
-            ->count(200)
+            ->count(500)
             ->create();
     }
 }
