@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
         @vite('resources/css/app.css')
+        @routes
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,53 +21,10 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        
     </head>
     <body class="antialiased">
         <div id='app'></div>
         @vite('resources/js/app.js')
-        <div> 
-            Matchmaker test
-
-            <div> 
-                Post data <br>
-
-                <a href="{{ route('storeData', [
-                            'type' => 'episode.downloaded',
-                            'event_id' => '1234',
-                            'occurred_at' => '2022-07-11 15:00:00.000',
-                            'data' => [
-                                'episode_id' => '1',
-                                'podcast_id' => '1'
-                                ] 
-                            ]) 
-                        }}"
-                    >
-                    Add Data 1 to database
-                </a> </br>
-                <a href="{{ route('storeData', [
-                            'type' => 'episode.downloaded',
-                            'event_id' => '5678',
-                            'occurred_at' => '2022-07-12 15:00:00.000',
-                            'data' => [
-                                'episode_id' => '2',
-                                'podcast_id' => '2'
-                                ] 
-                            ]) 
-                        }}"
-                        >Add Data 2 to database</a> </br>
-
-                <a href="{{ route('dailyDownloads', [
-                            'episode_id' => 1
-                            ])
-                        }}"
-                    > Daily download data for episode 1</a> </br>
-
-                <a href="{{ route('dailyDownloads', [
-                            'episode_id' => 2
-                            ])
-                        }}"
-                    > Daily download data for episode 2</a>
-            </div>
-        </div>
     </body>
 </html>

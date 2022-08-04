@@ -1,10 +1,10 @@
 import "./bootstrap";
 import { createApp, h } from "vue";
 
-import Comp from "./components/ex.vue";
+import DownloadComponent from "./components/DownloadComponent.vue";
 
 const app = createApp({
-    render: () => h(Comp),
+    render: () => h(DownloadComponent),
 });
 
 app.mount("#app");
