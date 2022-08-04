@@ -28,7 +28,12 @@ DB_PASSWORD=
 -   In your terminal/command line run composer install and npm install
 
 -   To set up the database table run: php artisan migrate
+
 -   To seed the database run: php artisan db:seed
+
+-   In your terminal run: npm run dev
+
+-   In another terminal run: php artisan serve
 
 Tests
 
